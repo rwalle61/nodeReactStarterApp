@@ -15,7 +15,8 @@
     "open": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "test:full": "CI=true npm test -- --coverage",
+    "test:once": "CI=true react-scripts test",
+    "test:full": "yarn test:once --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {

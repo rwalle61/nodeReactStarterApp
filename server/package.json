@@ -4,15 +4,15 @@
   "description": "sample backend",
   "main": "app.js",
   "scripts": {
-    "start": "node src/app.js",
-    "test": "NODE_ENV=staging mocha test/unit test/api --recursive --exit",
-    "test:coverage": "nyc npm test && nyc report --reporter=html && nyc check-coverage --statements 80 --branches 80 --functions 60 --lines 80",
-    "test:coverage:browse": "npm run test:coverage; open coverage/index.html",
-    "test:mutate": "stryker run",
-    "test:full": "npm run lint && npm run test:coverage && npm run test:mutate",
-    "lint": "eslint .",
-    "nodemon": "nodemon src/app.js",
-    "debug": "node --inspect src/app.js"
+    "start": "node src",
+    "dev": "nodemon src",
+    "debug": "node --inspect src",
+    "test": "NODE_ENV=staging jest --watch",
+    "test:once": "NODE_ENV=staging jest",
+    "test:coverage": "yarn test:once --coverage",
+    "test:coverage:browse": "yarn test:coverage; open coverage/lcov-report/index.html",
+    "test:full": "yarn lint && yarn test:coverage",
+    "lint": "eslint --fix ."
   },
   "repository": {
     "type": "git",
@@ -25,25 +25,16 @@
   },
   "homepage": "https://github.com:rwalle61/nodeReactStarterApp#readme",
   "devDependencies": {
-    "@stryker-mutator/core": "^2.5.0",
-    "@stryker-mutator/javascript-mutator": "^2.5.0",
-    "@stryker-mutator/mocha-framework": "^2.5.0",
-    "@stryker-mutator/mocha-runner": "^2.5.0",
-    "chai-openapi-response-validator": "^0.7.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-chai-friendly": "^0.5.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-mocha": "^6.3.0",
-    "mocha": "^7.1.0",
+    "jest": "^26.1.0",
+    "jest-openapi": "^0.9.4",
     "nodemon": "^2.0.2",
-    "nyc": "^15.0.0",
-    "rewire": "^4.0.1"
+    "supertest": "^4.0.2"
   },
   "dependencies": {
     "body-parser": "^1.19.0",
-    "chai": "*",
-    "chai-http": "^4.3.0",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
@@ -52,9 +43,6 @@
     "http": "0.0.0",
     "js-yaml": "^3.13.1",
     "log4js": "^6.1.2",
-    "path": "^0.12.7",
-    "sinon": "^9.0.0",
-    "sinon-chai": "^3.5.0",
-    "sinon-express-mock": "^2.2.1"
+    "path": "^0.12.7"
   }
 }

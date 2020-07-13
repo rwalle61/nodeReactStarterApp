@@ -1,64 +1,55 @@
 extends:
-  - airbnb-base
+  - airbnb
   - eslint:recommended
   - plugin:import/errors
   - plugin:import/warnings
   - plugin:cypress/recommended
+  - plugin:testing-library/recommended
+  - plugin:jest-dom/recommended
+  - prettier # must go last, to turn off some previous rules
 
 plugins:
-  - mocha
-  - chai-friendly
+  - prefer-arrow
+  - jest
+  - jest-dom
+  - testing-library
   - cypress
+
+settings:
+  react:
+    version: latest
 
 env:
   node: true
-  mocha: true
+  browser: true
+  jest: true
 
 parserOptions:
   ecmaVersion: 2020
   sourceType: module
 
 rules:
-  indent:
-    - error
-    - 4
-    - SwitchCase: 1
-  quotes:
-    - error
-    - single
-    - allowTemplateLiterals: true
-  semi:
-    - error
-    - always
-  no-console: 0
-  no-plusplus:
-    - error
-    - allowForLoopAfterthoughts: true
-  no-use-before-define:
-    - error
-    - functions: false
-  object-curly-newline:
-    - error
-    - consistent: true
-  object-curly-spacing:
-    - error
-    - always
-  comma-dangle:
-    - error
-    - always-multiline
-  require-await:
-    - error
   no-unused-vars:
     - error
     - argsIgnorePattern: next
-  prefer-arrow-callback:
+  require-await: error
+  prefer-arrow-callback: error
+  prefer-arrow/prefer-arrow-functions: error
+  import/no-extraneous-dependencies:
     - error
-  mocha/no-exclusive-tests: error
-  mocha/no-async-describe: error
-  mocha/no-nested-tests: error
-  mocha/no-top-level-hooks: error
-  mocha/max-top-level-suites:
-    - warn
-    - limit: 1
-  no-unused-expressions: 'off'
-  chai-friendly/no-unused-expressions: error
+    - devDependencies:
+        - '**/*.test.js'
+        - '**/*.spec.js'
+        - '**/*test*'
+        - '**/cypress/**'
+  import/extensions: off
+  react/forbid-prop-types: off
+  react/react-in-jsx-scope: off
+  react/prop-types: off
+  react/jsx-filename-extension: off
+  react/jsx-props-no-spreading: off
+
+overrides:
+  - files: [cypress/**/*.test.js]
+    rules:
+      'testing-library/await-async-query': off

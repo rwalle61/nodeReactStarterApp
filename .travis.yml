@@ -9,4 +9,4 @@ addons:
 install:
   - npm i
 script:
-  - npm run test:full
+  - yarn test:full

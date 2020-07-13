@@ -8,4 +8,8 @@
 // https://on.cypress.io/custom-commands
 // ***********************************************
 
-Cypress.Commands.add('getElementByDataCy', (dataCyTag) => cy.get(`[data-cy=${dataCyTag}]`));
+import '@testing-library/cypress/add-commands';
+
+Cypress.Commands.add('getElementByDataCy', (dataCyTag) =>
+  cy.get(`[data-cy=${dataCyTag}]`),
+);

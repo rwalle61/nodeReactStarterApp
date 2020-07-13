@@ -1,12 +1,10 @@
-describe('e2e app test', () => {
-    beforeEach(() => {
-        cy.visit('/');
+describe('e2e tests - as a user', () => {
+  beforeEach(() => {
+    cy.visit('/');
+  });
+  describe('when I visit the app home page', () => {
+    it('I see the hello world text', () => {
+      cy.findByText('Hello World').should('exist');
     });
-    it('renders the Create React App starter page', () => {
-        cy.get('.App')
-            .should('exist');
-        cy.get('.App-link')
-            .should('exist')
-            .click();
-    });
+  });
 });

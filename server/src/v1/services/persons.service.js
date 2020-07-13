@@ -1,8 +1,8 @@
 const getPersons = () => {
-    const persons = [{ name: 'richard' }];
-    return persons;
+  const persons = [{ name: 'richard' }];
+  return persons;
 };
 
 module.exports = {
-    getPersons,
+  getPersons,
 };
